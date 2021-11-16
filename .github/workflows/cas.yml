@@ -16,6 +16,12 @@ jobs:
     steps:
     - name: show client_payload
       run: |
+        echo "shkeptncontext": "${{ github.event.client_payload.shkeptncontext }} "
+        echo "triggeredid": "${{ github.event.client_payload.id }}"
+    - name: Simulate processsing
+      run: sleep 5
+    - name: send keptn finished event 
+      run: |
         json=$(cat <<-END
             {
               "data": {
