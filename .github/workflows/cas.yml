@@ -16,7 +16,7 @@ jobs:
     steps:
     - name: show client_payload
       run: |
-        echo "shkeptncontext": "${{ github.event.client_payload.shkeptncontext }} "
+        echo "shkeptncontext": "${{ github.event.client_payload.shkeptncontext }}"
         echo "triggeredid": "${{ github.event.client_payload.id }}"
     - name: Simulate processsing
       run: sleep 5
@@ -40,7 +40,7 @@ jobs:
               "source": "cas-quickstart",
               "specversion": "1.0",
               "type": "sh.keptn.event.mytask-interactive.finished",
-              "shkeptncontext": "${{ github.event.client_payload.shkeptncontext }} ",
+              "shkeptncontext": "${{ github.event.client_payload.shkeptncontext }}",
               "triggeredid": "${{ github.event.client_payload.id }}"
             }
         END
