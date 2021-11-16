@@ -1,0 +1,18 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Cloud Automation webhooks
+
+# Controls when the workflow will run
+on:
+  repository_dispatch:
+    types: 
+      - silent
+      - interactive
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - run: 'echo "client_payload: ${{ toJson(github.event.client_payload) }}"'
