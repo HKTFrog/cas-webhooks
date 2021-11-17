@@ -1,43 +1,41 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Cloud Automation webhooks
+name: Cloud Automation webhooks combo
 
 # Controls when the workflow will run
 on:
   workflow_dispatch:
   repository_dispatch:
     types: 
-      - silent
-      - interactive        
+      - silent-combo
+      - interactive-combo        
 jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
     steps:
     - name: show client_payload
-      if: github.event.action == 'silent'
+      if: github.event.action == 'silent-combo'
       run: |
         echo "Received silent webhook, just displaying data"
         echo "type": "${{ github.event.client_payload.type }}"
         echo "shkeptncontext": "${{ github.event.client_payload.shkeptncontext }}"
         echo "triggeredid": "${{ github.event.client_payload.id }}"
     - name: Simulate processsing
-      if: github.event.action == 'interactive'
+      if: github.event.action == 'interactive-combo'
       run: sleep 5
     - name: send keptn finished event
-      if: github.event.action == 'interactive'
+      if: github.event.action == 'interactive-combo'
       run: |
         echo "Received interactive webhook, will send back keptn finished event"
         json=$(cat <<-END
             {
               "data": {
-                "project":"demo",
-                "stage":"production",
-                "service":"casdemoapp",
+                "project":"${{ github.event.client_payload.project }}",
+                "stage":"${{ github.event.client_payload.stage }}",
+                "service":"${{ github.event.client_payload.service }}",
                 "status": "succeeded",
-                "result": "pass", 
-                "custom":"this is custom data",
-                "custom1":"this is custom1 data",
+                "result": "pass",
                 "mytask-interactive": {
                   "link": "https://a-back-link-to-result",
                   "more": "even more data"
