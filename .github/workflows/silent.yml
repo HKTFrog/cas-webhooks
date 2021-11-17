@@ -10,14 +10,21 @@ on:
       - silent
 jobs:
   test:
-    name: Demo interactive event
+    name: Demo silent event
     runs-on: ubuntu-latest
     steps:
-    - name: show client_payload
+    - name: show client_payload value
       run: |
         echo "Received silent webhook, just displaying data"
-        echo "type": "${{ github.event.client_payload.type }}"
-        echo "shkeptncontext": "${{ github.event.client_payload.shkeptncontext }}"
-        echo "triggeredid": "${{ github.event.client_payload.id }}"
+        echo "project        : ${{ github.event.client_payload.project }}"
+        echo "service        : ${{ github.event.client_payload.service }}"
+        echo "stage          : ${{ github.event.client_payload.stage }}"
+        echo "type           : ${{ github.event.client_payload.type }}"
+        echo "status         : ${{ github.event.client_payload.status }}"
+        echo "result         : ${{ github.event.client_payload.result }}"
+        echo "shkeptncontext : ${{ github.event.client_payload.shkeptncontext }}"
+        echo "id             : ${{ github.event.client_payload.id }}"
+        echo ""
+        echo "client_payload : ${{ github.event.client_payload }}"
         echo ""
         echo "Complete"
