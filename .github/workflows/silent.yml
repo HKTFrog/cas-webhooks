@@ -4,7 +4,6 @@ name: webhook silent example
 
 # Controls when the workflow will run
 on:
-  workflow_dispatch:
   repository_dispatch:
     types: 
       - silent
@@ -13,7 +12,7 @@ jobs:
     name: Demo silent event
     runs-on: ubuntu-latest
     steps:
-    - name: show client_payload value
+    - name: show client_payload values
       run: |
         echo "Received silent webhook, just displaying data"
         echo "project        : ${{ github.event.client_payload.project }}"
@@ -25,6 +24,6 @@ jobs:
         echo "shkeptncontext : ${{ github.event.client_payload.shkeptncontext }}"
         echo "id             : ${{ github.event.client_payload.id }}"
         echo ""
-        echo "client_payload : ${{ toJson(github.event) }}"
+        echo "client_payload : ${{ toJson(github.event.client_payload) }}"
         echo ""
         echo "Complete"
