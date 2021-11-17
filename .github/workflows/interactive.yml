@@ -9,7 +9,7 @@ on:
       - interactive        
 jobs:
   test:
-    name: Test
+    name: Demo interactive event
     runs-on: ubuntu-latest
     steps:
     - name: send mytask-interactive.finished event
@@ -37,4 +37,5 @@ jobs:
         END
         )
         echo "json=$json"
-        curl -X POST "${{ secrets.KEPTN_API_URL }}/v1/event" -H "Content-Type: application/json" -H "accept: application/json" -H "x-token: ${{ secrets.KEPTN_API_TOKEN }}" -d "$json"
+        curl -s -X POST "${{ secrets.KEPTN_API_URL }}/v1/event" -H "Content-Type: application/json" -H "accept: application/json" -H "x-token: ${{ secrets.KEPTN_API_TOKEN }}" -d "$json"
+        echo "Complete"
