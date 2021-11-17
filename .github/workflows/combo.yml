@@ -1,10 +1,8 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Cloud Automation webhooks combo
+name: webhooks combo example
 
-# Controls when the workflow will run
 on:
-  workflow_dispatch:
   repository_dispatch:
     types: 
       - silent-combo
