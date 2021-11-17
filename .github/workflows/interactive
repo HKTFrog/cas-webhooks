@@ -13,7 +13,7 @@ jobs:
     name: Test
     runs-on: ubuntu-latest
     steps:
-    - name: send keptn finished event
+    - name: send mytask-interactive.finished event
       run: |
         echo "Received interactive webhook, will send back keptn finished event"
         json=$(cat <<-END
