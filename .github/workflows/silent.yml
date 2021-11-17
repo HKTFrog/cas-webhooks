@@ -10,7 +10,7 @@ on:
       - silent
 jobs:
   test:
-    name: Test
+    name: Demo interactive event
     runs-on: ubuntu-latest
     steps:
     - name: show client_payload
@@ -19,3 +19,5 @@ jobs:
         echo "type": "${{ github.event.client_payload.type }}"
         echo "shkeptncontext": "${{ github.event.client_payload.shkeptncontext }}"
         echo "triggeredid": "${{ github.event.client_payload.id }}"
+        echo ""
+        echo "Complete"
